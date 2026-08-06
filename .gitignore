@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ignore dynamic databases
+src/data/categories.json
+src/data/posts.json

@@ -6,29 +6,16 @@ import PostCard from "@/components/PostCard";
 import Sidebar from "@/components/Sidebar";
 import AdSlot from "@/components/AdSlot";
 
+import { categories, getCategoryBySlug } from "@/data/categories";
+
 interface CategoryPageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Map slug back to category name and tag styles
-const categoryMap: Record<string, { name: string; color: string }> = {
-  "rescue-stories": { name: "Rescue Stories", color: "var(--rust)" },
-  "training": { name: "Training", color: "var(--gold-deep)" },
-  "breed-spotlight": { name: "Breed Spotlight", color: "var(--teal)" },
-  "health-and-wellness": { name: "Health & Wellness", color: "var(--teal)" },
-  "funny-and-cute": { name: "Funny & Cute", color: "var(--gold-deep)" },
-  "adventure": { name: "Adventure", color: "var(--green)" },
-  "gear": { name: "Gear", color: "var(--ink-soft)" },
-  "celebrity-dogs": { name: "Celebrity Dogs", color: "var(--ink-soft)" },
-  "senior-dogs": { name: "Senior Dogs", color: "var(--teal)" },
-  "puppy-life": { name: "Puppy Life", color: "var(--green)" },
-  "other": { name: "Other", color: "var(--ink-soft)" }
-};
-
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
-  const categoryInfo = categoryMap[slug];
+  const categoryInfo = getCategoryBySlug(slug);
 
   if (!categoryInfo) {
     notFound();
@@ -99,7 +86,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   );
 }
 export async function generateStaticParams() {
-  return Object.keys(categoryMap).map((slug) => ({
-    slug,
+  return categories.map((cat) => ({
+    slug: cat.slug,
   }));
 }

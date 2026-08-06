@@ -5,19 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AdSlot from "./AdSlot";
 
-export const categories = [
-  { name: "Rescue Stories", slug: "rescue-stories" },
-  { name: "Training", slug: "training" },
-  { name: "Breed Spotlight", slug: "breed-spotlight" },
-  { name: "Health & Wellness", slug: "health-and-wellness" },
-  { name: "Funny & Cute", slug: "funny-and-cute" },
-  { name: "Adventure", slug: "adventure" },
-  { name: "Gear", slug: "gear" },
-  { name: "Celebrity Dogs", slug: "celebrity-dogs" },
-  { name: "Senior Dogs", slug: "senior-dogs" },
-  { name: "Puppy Life", slug: "puppy-life" },
-  { name: "Other", slug: "other" }
-];
+import { categories } from "@/data/categories";
 
 export default function Header() {
   const pathname = usePathname();

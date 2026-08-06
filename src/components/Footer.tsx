@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { categories } from "./Header";
+import { categories } from "@/data/categories";
 import { getLatestPosts } from "@/data/posts";
 
 export default function Footer() {
